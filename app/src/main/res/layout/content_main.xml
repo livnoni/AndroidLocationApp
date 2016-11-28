@@ -13,8 +13,26 @@
     tools:context="com.example.yehuda.androidlocationapp.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+        <Button
+            android:text="Show GPS location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_show_gps_location" />
+
+        <TextView
+            android:text="Location:\nAltitude:\nSpeed:\nAccuracy:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/GpsCoordination"
+            android:layout_weight="0.07"
+            android:gravity="left"/>
+    </LinearLayout>
 </RelativeLayout>
