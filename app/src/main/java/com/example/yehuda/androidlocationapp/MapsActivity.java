@@ -19,8 +19,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double Longitude;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -29,31 +28,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent intent = getIntent();
 
-        Log.i("check","----------------------");
-        Log.i("check", "before: " + "Latitude=" + Latitude +"Longitude: "+Longitude);
-        Log.i("check","----------------------");
+        Log.i("check", "----------------------");
+        Log.i("check", "before: " + "Latitude=" + Latitude + "Longitude: " + Longitude);
+        Log.i("check", "----------------------");
 
-        Latitude = intent.getDoubleExtra("Latitude",77);
-        Longitude = intent.getDoubleExtra("Longitude",88);
+        Latitude = intent.getDoubleExtra("Latitude", 77);
+        Longitude = intent.getDoubleExtra("Longitude", 88);
 
-        Log.i("check","----------------------");
-        Log.i("check", "after: " + "Latitude=" + Latitude +"Longitude: "+Longitude);
-        Log.i("check","----------------------");
+        Log.i("check", "----------------------");
+        Log.i("check", "after: " + "Latitude=" + Latitude + "Longitude: " + Longitude);
+        Log.i("check", "----------------------");
 
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap)
-    {
+    public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         //ariel = 32.104954, 35.207730
         //LatLng Ariel = new LatLng(32.104954, 35.207730);
         LatLng NewLocation = new LatLng(Latitude, Longitude);
-        mMap.addMarker(new MarkerOptions().position(NewLocation).title("Marker in "+Latitude+" / "+ Longitude));
+        mMap.addMarker(new MarkerOptions().position(NewLocation).title("Marker in " + Latitude + " / " + Longitude));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(NewLocation));
     }
 }
-
 
 
 //
@@ -68,8 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //import com.google.android.gms.maps.model.MarkerOptions;
 //
 //
-
-
 
 
 //public class MapsActivity extends FragmentActivity
