@@ -3,6 +3,7 @@ package com.example.yehuda.androidlocationapp;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GpsButton = (Button) findViewById(R.id.button_show_gps_location);
+        GpsButton.setBackgroundColor(Color.RED);
+
         CoordinationView = (TextView) findViewById(R.id.GpsCoordination);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location)
             {
+                GpsButton.setBackgroundColor(Color.GREEN);
+
+
                 double Latitude = location.getLatitude();
                 double Longitude = location.getLongitude();
                 double Altitude = location.getAltitude();
@@ -50,15 +56,6 @@ public class MainActivity extends AppCompatActivity {
                         "Altitude:" +Altitude+"\n" +
                         "Speed: "+ speed+" \n" +
                         "Accuracy: "+Accuracy);
-
-//                CoordinationView.append("Latitude: "+location.getLatitude()+"\n"
-//                        +"Longitude"+location.getLongitude()+"\n"
-//                        +"getAltitude"+location.getAltitude()+"\n"
-//                        +"getSpeed"+location.getSpeed()+"\n"
-//                        +"getAccuracy"+location.getAccuracy()+"\n"
-//
-//
-//                        +"\n");
             }
 
             @Override
@@ -69,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProviderEnabled(String s)
             {
-
             }
 
             @Override
@@ -110,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //noinspection MissingPermission
-
                     locationManager.requestLocationUpdates("gps", minTime, minDistance, locationListener);
                 }
             });
