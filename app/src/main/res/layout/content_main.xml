@@ -34,5 +34,11 @@
             android:id="@+id/GpsCoordination"
             android:layout_weight="0.07"
             android:gravity="left"/>
+
+        <Button
+            android:text="Show location on Map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_move_to_map_activity" />
     </LinearLayout>
 </RelativeLayout>

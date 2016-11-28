@@ -12,13 +12,16 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActionBarActivity {
     private Button GpsButton;
+    private Button ShowOnMap;
     private TextView CoordinationView;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -27,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int minDistance = 0; //min distance (in meters), to show new gps single
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,13 +41,11 @@ public class MainActivity extends AppCompatActivity {
         CoordinationView = (TextView) findViewById(R.id.GpsCoordination);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationListener = new LocationListener()
-        {
+        locationListener = new LocationListener(){
             @Override
             public void onLocationChanged(Location location)
             {
                 GpsButton.setBackgroundColor(Color.GREEN);
-
 
                 double Latitude = location.getLatitude();
                 double Longitude = location.getLongitude();
@@ -78,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         };
 
         configure_button();
+        onClickButtonMapListener();
+
     }
 
         @Override
@@ -111,6 +115,17 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+    public void onClickButtonMapListener()
+    {
+        ShowOnMap = (Button) findViewById(R.id.button_move_to_map_activity);
+        ShowOnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("com.example.yehuda.androidlocationapp.MapsActivity");
+                startActivity(intent);
+            }
+        });
+    }
 
 }
 
