@@ -3,6 +3,7 @@ package com.example.yehuda.androidlocationapp;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.icu.text.DecimalFormat;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -40,16 +41,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location)
             {
-                CoordinationView.setText("");
-                
-                CoordinationView.append("Latitude: "+location.getLatitude()+"\n"
-                        +"Longitude"+location.getLongitude()+"\n"
-                        +"getAltitude"+location.getAltitude()+"\n"
-                        +"getSpeed"+location.getSpeed()+"\n"
-                        +"getAccuracy"+location.getAccuracy()+"\n"
+                double Latitude = location.getLatitude();
+                double Longitude = location.getLongitude();
+                double Altitude = location.getAltitude();
+                double speed = location.getSpeed();
+                double Accuracy = location.getAccuracy();
 
 
-                        +"\n");
+                CoordinationView.setText("Location: "+Latitude+ " / "+Longitude + "\n" +
+                        "Altitude:" +Altitude+"\n" +
+                        "Speed: "+ speed+" \n" +
+                        "Accuracy: "+Accuracy);
+
+//                CoordinationView.append("Latitude: "+location.getLatitude()+"\n"
+//                        +"Longitude"+location.getLongitude()+"\n"
+//                        +"getAltitude"+location.getAltitude()+"\n"
+//                        +"getSpeed"+location.getSpeed()+"\n"
+//                        +"getAccuracy"+location.getAccuracy()+"\n"
+//
+//
+//                        +"\n");
             }
 
             @Override
