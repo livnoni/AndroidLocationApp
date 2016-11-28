@@ -1,7 +1,10 @@
 package com.example.yehuda.androidlocationapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -12,6 +15,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private double Latitude;
+    private double Longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,18 +26,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Intent intent = getIntent();
+
+        Log.i("check","----------------------");
+        Log.i("check", "before: " + "Latitude=" + Latitude +"Longitude: "+Longitude);
+        Log.i("check","----------------------");
+
+        Latitude = intent.getDoubleExtra("Latitude",77);
+        Longitude = intent.getDoubleExtra("Longitude",88);
+
+        Log.i("check","----------------------");
+        Log.i("check", "after: " + "Latitude=" + Latitude +"Longitude: "+Longitude);
+        Log.i("check","----------------------");
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
         mMap = googleMap;
-
-        // Add a marker in Sydney, Australia, and move the camera.
         //ariel = 32.104954, 35.207730
-        LatLng Ariel = new LatLng(32.104954, 35.207730);
-        mMap.addMarker(new MarkerOptions().position(Ariel).title("Marker in Ariel"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Ariel));
+        //LatLng Ariel = new LatLng(32.104954, 35.207730);
+        LatLng NewLocation = new LatLng(Latitude, Longitude);
+        mMap.addMarker(new MarkerOptions().position(NewLocation).title("Marker in "+Latitude+" / "+ Longitude));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(NewLocation));
     }
 }
 

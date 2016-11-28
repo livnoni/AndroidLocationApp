@@ -26,6 +26,12 @@ public class MainActivity extends ActionBarActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
 
+    private double Latitude;
+    private double Longitude;
+    private double Altitude;
+    private double speed;
+    private double Accuracy;
+
     private static final int minTime = 5000; //min time in milliseconds to show new gps single
     private static final int minDistance = 0; //min distance (in meters), to show new gps single
 
@@ -47,11 +53,11 @@ public class MainActivity extends ActionBarActivity {
             {
                 GpsButton.setBackgroundColor(Color.GREEN);
 
-                double Latitude = location.getLatitude();
-                double Longitude = location.getLongitude();
-                double Altitude = location.getAltitude();
-                double speed = location.getSpeed();
-                double Accuracy = location.getAccuracy();
+                Latitude = location.getLatitude();
+                Longitude = location.getLongitude();
+                Altitude = location.getAltitude();
+                speed = location.getSpeed();
+                Accuracy = location.getAccuracy();
 
 
                 CoordinationView.setText("Location: "+Latitude+ " / "+Longitude + "\n" +
@@ -122,6 +128,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("com.example.yehuda.androidlocationapp.MapsActivity");
+                intent.putExtra("Latitude",Latitude);
+                intent.putExtra("Longitude",Longitude);
                 startActivity(intent);
             }
         });
