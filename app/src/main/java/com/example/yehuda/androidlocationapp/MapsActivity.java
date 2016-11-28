@@ -15,8 +15,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private double Latitude;
-    private double Longitude;
+    private double Latitude = 32.104954;
+    private double Longitude =35.207730 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,7 +28,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         Intent intent = getIntent();
-
         Log.i("check","----------------------");
         Log.i("check", "before: " + "Latitude=" + Latitude +"Longitude: "+Longitude);
         Log.i("check","----------------------");

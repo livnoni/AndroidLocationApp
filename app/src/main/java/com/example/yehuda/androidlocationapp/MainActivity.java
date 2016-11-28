@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -18,10 +19,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
     private Button GpsButton;
     private Button ShowOnMap;
+    private Button SendData;
     private TextView CoordinationView;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -87,6 +90,7 @@ public class MainActivity extends ActionBarActivity {
 
         configure_button();
         onClickButtonMapListener();
+        onClickButtonSendDataListener();
 
     }
 
@@ -133,6 +137,39 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void onClickButtonSendDataListener()
+    {
+
+        SendData = (Button) findViewById(R.id.button_share_location);
+        SendData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                sendEmail();
+            }
+        });
+    }
+    protected void sendEmail() {
+        Log.i("Send email", "");
+
+        String[] TO = {"yehuda.livnoni@gmail.com"};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Location is");
+        emailIntent.putExtra(Intent.EXTRA_TEXT,Latitude +" / "+ Longitude );
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("finished sending","done");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this,
+                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

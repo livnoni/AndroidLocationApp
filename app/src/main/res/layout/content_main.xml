@@ -40,5 +40,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_move_to_map_activity" />
+
+        <Button
+            android:text="Share Location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_share_location" />
     </LinearLayout>
 </RelativeLayout>
