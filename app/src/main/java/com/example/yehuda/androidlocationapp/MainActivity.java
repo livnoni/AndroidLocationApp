@@ -29,8 +29,8 @@ public class MainActivity extends ActionBarActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    private double Latitude;
-    private double Longitude;
+    private double Latitude =32.104954; //ariel Latitude position, for default location
+    private double Longitude=35.207730; //ariel Longitude position, for default location
     private double Altitude;
     private double speed;
     private double Accuracy;

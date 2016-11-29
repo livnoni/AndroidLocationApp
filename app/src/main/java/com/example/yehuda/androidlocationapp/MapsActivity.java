@@ -15,8 +15,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private double Latitude = 32.104954;
-    private double Longitude =35.207730 ;
+    private double Latitude;
+    private double Longitude;
+    private float zoomLevel = (float)16.0; //This goes up to 21
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,13 +46,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap)
     {
         mMap = googleMap;
-        //ariel = 32.104954, 35.207730
-        //LatLng Ariel = new LatLng(32.104954, 35.207730);
         LatLng NewLocation = new LatLng(Latitude, Longitude);
         mMap.addMarker(new MarkerOptions().position(NewLocation).title("Marker in "+Latitude+" / "+ Longitude));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(NewLocation));
-
-        float zoomLevel = (float)16.0; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NewLocation, zoomLevel));
     }
 }
