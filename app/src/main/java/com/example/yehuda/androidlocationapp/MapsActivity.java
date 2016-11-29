@@ -49,7 +49,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //LatLng Ariel = new LatLng(32.104954, 35.207730);
         LatLng NewLocation = new LatLng(Latitude, Longitude);
         mMap.addMarker(new MarkerOptions().position(NewLocation).title("Marker in "+Latitude+" / "+ Longitude));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(NewLocation));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(NewLocation));
+
+        float zoomLevel = (float)16.0; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NewLocation, zoomLevel));
     }
 }
 
