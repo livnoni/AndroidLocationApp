@@ -25,12 +25,13 @@ public class MainActivity extends ActionBarActivity {
     private Button GpsButton;
     private Button ShowOnMap;
     private Button SendData;
+    private Button SendDataToServer;
     private TextView CoordinationView;
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    private double Latitude =32.104954; //ariel Latitude position, for default location
-    private double Longitude=35.207730; //ariel Longitude position, for default location
+    private double Latitude = 32.104954; //ariel Latitude position, for default location
+    private double Longitude = 35.207730; //ariel Longitude position, for default location
     private double Altitude;
     private double speed;
     private double Accuracy;
@@ -39,8 +40,7 @@ public class MainActivity extends ActionBarActivity {
     private static final int minDistance = 0; //min distance (in meters), to show new gps single
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -50,10 +50,9 @@ public class MainActivity extends ActionBarActivity {
         CoordinationView = (TextView) findViewById(R.id.GpsCoordination);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationListener = new LocationListener(){
+        locationListener = new LocationListener() {
             @Override
-            public void onLocationChanged(Location location)
-            {
+            public void onLocationChanged(Location location) {
                 GpsButton.setBackgroundColor(Color.GREEN);
 
                 Latitude = location.getLatitude();
@@ -63,10 +62,10 @@ public class MainActivity extends ActionBarActivity {
                 Accuracy = location.getAccuracy();
 
 
-                CoordinationView.setText("Location: "+Latitude+ " / "+Longitude + "\n" +
-                        "Altitude:" +Altitude+"\n" +
-                        "Speed: "+ speed+" \n" +
-                        "Accuracy: "+Accuracy);
+                CoordinationView.setText("Location: " + Latitude + " / " + Longitude + "\n" +
+                        "Altitude:" + Altitude + "\n" +
+                        "Speed: " + speed + " \n" +
+                        "Accuracy: " + Accuracy);
             }
 
             @Override
@@ -75,13 +74,11 @@ public class MainActivity extends ActionBarActivity {
             }
 
             @Override
-            public void onProviderEnabled(String s)
-            {
+            public void onProviderEnabled(String s) {
             }
 
             @Override
-            public void onProviderDisabled(String s)
-            {
+            public void onProviderDisabled(String s) {
                 //GO to gps SETTING:
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
@@ -91,65 +88,61 @@ public class MainActivity extends ActionBarActivity {
         configure_button();
         onClickButtonMapListener();
         onClickButtonSendDataListener();
-
+        onClickButtonSendDataToServer();
     }
 
-        @Override
-        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-            switch (requestCode){
-                case 10:
-                    configure_button();
-                    break;
-                default:
-                    break;
-            }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 10:
+                configure_button();
+                break;
+            default:
+                break;
         }
+    }
 
-        void configure_button()
-        {
-            // first check for permissions
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.INTERNET},10);
-                }
-                return;
+    void configure_button() {
+        // first check for permissions
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET}, 10);
             }
-            // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
-            GpsButton.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View view) {
-                    //noinspection MissingPermission
-                    locationManager.requestLocationUpdates("gps", minTime, minDistance, locationListener);
-                }
-            });
+            return;
         }
+        // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
+        GpsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //noinspection MissingPermission
+                locationManager.requestLocationUpdates("gps", minTime, minDistance, locationListener);
+            }
+        });
+    }
 
-    public void onClickButtonMapListener()
-    {
+    public void onClickButtonMapListener() {
         ShowOnMap = (Button) findViewById(R.id.button_move_to_map_activity);
         ShowOnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("com.example.yehuda.androidlocationapp.MapsActivity");
-                intent.putExtra("Latitude",Latitude);
-                intent.putExtra("Longitude",Longitude);
+                intent.putExtra("Latitude", Latitude);
+                intent.putExtra("Longitude", Longitude);
                 startActivity(intent);
             }
         });
     }
-    public void onClickButtonSendDataListener()
-    {
 
+    public void onClickButtonSendDataListener() {
         SendData = (Button) findViewById(R.id.button_share_location);
         SendData.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 sendEmail();
             }
         });
     }
+
     protected void sendEmail() {
         Log.i("Send email", "");
 
@@ -160,18 +153,30 @@ public class MainActivity extends ActionBarActivity {
 
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Location is");
-        emailIntent.putExtra(Intent.EXTRA_TEXT,Latitude +" / "+ Longitude );
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Latitude + " / " + Longitude);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             finish();
-            Log.i("finished sending","done");
+            Log.i("finished sending", "done");
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(MainActivity.this,
                     "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
 
+    public void onClickButtonSendDataToServer()
+    {
+        SendDataToServer = (Button) findViewById(R.id.button_send_data_to_server);
+        SendDataToServer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent("com.example.yehuda.androidlocationapp.SendDataToServerActivity");
+                startActivity(intent);
+            }
+        });
+    }
 }
 
 

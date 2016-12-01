@@ -46,5 +46,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_share_location" />
+
+        <Button
+            android:text="Send Data to server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_send_data_to_server" />
     </LinearLayout>
 </RelativeLayout>
