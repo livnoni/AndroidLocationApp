@@ -61,7 +61,6 @@ public class MainActivity extends ActionBarActivity {
                 speed = location.getSpeed();
                 Accuracy = location.getAccuracy();
 
-
                 CoordinationView.setText("Location: " + Latitude + " / " + Longitude + "\n" +
                         "Altitude:" + Altitude + "\n" +
                         "Speed: " + speed + " \n" +
@@ -70,11 +69,14 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
+                CoordinationView.setText("on status changed");
 
             }
 
             @Override
             public void onProviderEnabled(String s) {
+                CoordinationView.setText("on provider enabled");
+
             }
 
             @Override

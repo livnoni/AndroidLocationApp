@@ -29,6 +29,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         Intent intent = getIntent();
+
         Log.i("check","----------------------");
         Log.i("check", "before: " + "Latitude=" + Latitude +"Longitude: "+Longitude);
         Log.i("check","----------------------");
