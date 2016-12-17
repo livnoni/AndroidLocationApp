@@ -1,6 +1,8 @@
 package com.example.yehuda.androidlocationapp;
 
+import android.app.DownloadManager;
 import android.content.Intent;
+import android.net.http.RequestQueue;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +33,7 @@ public class SendDataToServerActivity extends AppCompatActivity {
     }
     public void send()
     {
-        
+        Log.i("sendDataToServer", "Yehuda is the king !");
     }
 
 }
