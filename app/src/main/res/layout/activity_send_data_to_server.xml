@@ -10,4 +10,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.yehuda.androidlocationapp.SendDataToServerActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="latitude: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/latitude"
+            android:textAlignment="viewStart"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="longitude: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/longitude"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="altitude: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/altitude"
+            android:textStyle="normal|bold" />
+
+        <Button
+            android:text="send data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_send_data" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_field_from_server"
+            android:layout_weight="0.71" />
+
+        <Button
+            android:text="show data from server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_data_from_server" />
+
+    </LinearLayout>
 </RelativeLayout>
