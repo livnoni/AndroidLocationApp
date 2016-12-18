@@ -63,8 +63,11 @@ public class SendDataToServerActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    String insertUrl = "http://10.0.0.2/location/insertLocation.php";
-    String showUrl = "http://10.0.0.2/location/showLocations.php";
+    //for my local phpmyadmin:
+    // String insertUrl = "http://10.0.0.2/tutorial/insertStudent.php";
+    // String showUrl = "http://10.0.0.2/tutorial/showStudents.php";
+    String insertUrl = "http://yehudalocation.000webhostapp.com/location/insertLocation.php";
+    String showUrl = "http://yehudalocation.000webhostapp.com/location/showLocations.php";
 
     private static final int minTime = 1000; //min time in milliseconds to show new gps single
     private static final int minDistance = 0; //min distance (in meters), to show new gps single
