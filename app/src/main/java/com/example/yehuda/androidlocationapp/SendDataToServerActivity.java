@@ -24,10 +24,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.apache.http.NameValuePair;
@@ -53,7 +55,7 @@ import java.util.Map;
 
 public class SendDataToServerActivity extends AppCompatActivity {
     double Altitude,Latitude,Longitude;
-    String model,time;
+    String model;
     TextView altitude,latitude,longitude,result;
     Button buttonSendData,ButtonGetData;
 
@@ -77,9 +79,9 @@ public class SendDataToServerActivity extends AppCompatActivity {
         latitude = (TextView) findViewById(R.id.latitude);
         longitude = (TextView) findViewById(R.id.longitude);
         result = (TextView) findViewById(R.id.text_field_from_server);
-        buttonSendData = (Button) findViewById(R.id.button_send_data_to_server);
+        buttonSendData = (Button) findViewById(R.id.button_send_data);
         ButtonGetData = (Button) findViewById(R.id.button_data_from_server);
-
+        model = Build.MODEL;
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
 
@@ -87,15 +89,8 @@ public class SendDataToServerActivity extends AppCompatActivity {
         onClickButtonSendDataToServer();
         onClickButtonShowDataFromServer();
 
-        send();
     }
-    public void send()
-    {
-        //Log.i("sendDataToServer", "Yehuda is the king !");
-       // Log.i("Build.MODEL", Build.MODEL);
-        //Log.i("date", DateFormat.getDateTimeInstance().format(new Date()));
 
-    }
 
     public void turnOnGps()
     {
@@ -163,7 +158,39 @@ public class SendDataToServerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                StringRequest request = new StringRequest(Request.Method.POST, insertUrl,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response)
+                            {
 
+                            }
+                        }, new Response.ErrorListener()
+                {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError
+                    {
+                        Map<String, String> parameters = new HashMap<String, String>();
+                        parameters.put("latitude", String.valueOf(Latitude));
+                        parameters.put("longitude", String.valueOf(Longitude));
+                        parameters.put("altitude", String.valueOf(Altitude));
+                        parameters.put("model", String.valueOf(model));
+                        parameters.put("date", String.valueOf(DateFormat.getDateTimeInstance().format(new Date())));
+
+                        return parameters;
+                    }
+                };
+                Log.i("the model is", model);
+
+                requestQueue.add(request);
             }
         });
     }
@@ -174,13 +201,13 @@ public class SendDataToServerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Log.i("sendDataToServer", "Yehuda is the king !");
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                         showUrl,new Response.Listener<JSONObject>()
                 {
                     @Override
                     public void onResponse(JSONObject response)
                     {
+                        result.setText("");
                         try {
                             JSONArray locations = response.getJSONArray("Locations");
                             for(int i=0;i<locations.length();i++)
