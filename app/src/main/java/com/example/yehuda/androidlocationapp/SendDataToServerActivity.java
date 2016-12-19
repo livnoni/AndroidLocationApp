@@ -16,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -68,6 +69,7 @@ public class SendDataToServerActivity extends AppCompatActivity {
     // String showUrl = "http://10.0.0.2/tutorial/showStudents.php";
     String insertUrl = "http://yehudalocation.000webhostapp.com/location/insertLocation.php";
     String showUrl = "http://yehudalocation.000webhostapp.com/location/showLocations.php";
+    //go to http://yehudalocation.000webhostapp.com/location/ and see all the php files
 
     private static final int minTime = 1000; //min time in milliseconds to show new gps single
     private static final int minDistance = 0; //min distance (in meters), to show new gps single
@@ -82,6 +84,8 @@ public class SendDataToServerActivity extends AppCompatActivity {
         latitude = (TextView) findViewById(R.id.latitude);
         longitude = (TextView) findViewById(R.id.longitude);
         result = (TextView) findViewById(R.id.text_field_from_server);
+        result.setMovementMethod(new ScrollingMovementMethod());
+
         buttonSendData = (Button) findViewById(R.id.button_send_data);
         ButtonGetData = (Button) findViewById(R.id.button_data_from_server);
         model = Build.MODEL;

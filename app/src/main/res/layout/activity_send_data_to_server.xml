@@ -50,8 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/text_field_from_server"
-            android:scrollbars="vertical"
-            android:layout_weight="0.94" />
+            android:layout_weight="0.94"
+            android:scrollbars="vertical"/>
 
         <Button
             android:text="show data from server"
