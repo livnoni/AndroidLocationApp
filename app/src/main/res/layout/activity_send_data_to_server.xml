@@ -46,6 +46,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_send_data" />
 
+        <Switch
+            android:text="AUTOMATICALLY SEND DATA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_automatically_send_data"
+            android:textStyle="normal|bold"
+            android:textAlignment="center" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
