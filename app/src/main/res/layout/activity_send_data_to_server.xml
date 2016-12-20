@@ -59,7 +59,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/text_field_from_server"
             android:layout_weight="0.94"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            android:freezesText="true"/>
 
         <Button
             android:text="show data from server"
