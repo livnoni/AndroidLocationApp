@@ -1,6 +1,7 @@
 package com.example.yehuda.androidlocationapp;
 
 import android.Manifest;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -21,11 +22,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends ActionBarActivity {
     private Button GpsButton;
     private Button ShowOnMap;
     private Button SendData;
     private Button SendDataToServer;
+    private Button buttonQrCodeScanner;
     private TextView CoordinationView;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -35,6 +38,8 @@ public class MainActivity extends ActionBarActivity {
     private double Altitude;
     private double speed;
     private double Accuracy;
+
+    //private ZXingScannerView msScannerView;
 
     private static final int minTime = 5000; //min time in milliseconds to show new gps single
     private static final int minDistance = 0; //min distance (in meters), to show new gps single
@@ -46,6 +51,8 @@ public class MainActivity extends ActionBarActivity {
 
         GpsButton = (Button) findViewById(R.id.button_show_gps_location);
         GpsButton.setBackgroundColor(Color.RED);
+
+        buttonQrCodeScanner = (Button) findViewById(R.id.button_QrCodeScanner);
 
         CoordinationView = (TextView) findViewById(R.id.GpsCoordination);
 
@@ -91,6 +98,7 @@ public class MainActivity extends ActionBarActivity {
         onClickButtonMapListener();
         onClickButtonSendDataListener();
         onClickButtonSendDataToServer();
+        onClickbuttonQrCodeScanner();
     }
 
     @Override
@@ -176,6 +184,20 @@ public class MainActivity extends ActionBarActivity {
             {
                 Intent intent = new Intent("com.example.yehuda.androidlocationapp.SendDataToServerActivity");
                 startActivity(intent);
+            }
+        });
+    }
+    public void onClickbuttonQrCodeScanner()
+    {
+        buttonQrCodeScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Log.i("QR:","button pressed.");
+                Intent intent = new Intent("com.example.yehuda.androidlocationapp.QrReaderActivity");
+                startActivity(intent);
+
+
             }
         });
     }

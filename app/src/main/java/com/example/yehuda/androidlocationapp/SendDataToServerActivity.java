@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.android.volley.AuthFailureError;
@@ -110,7 +111,7 @@ public class SendDataToServerActivity extends AppCompatActivity {
         latitude = (TextView) findViewById(R.id.latitude);
         longitude = (TextView) findViewById(R.id.longitude);
         result = (TextView) findViewById(R.id.text_field_from_server);
-        result.setMovementMethod(new ScrollingMovementMethod());
+        result.setMovementMethod(new ScrollingMovementMethod()); //alow to scoll down if the text is long...
 
         buttonSendData = (Button) findViewById(R.id.button_send_data);
         ButtonGetData = (Button) findViewById(R.id.button_data_from_server);
@@ -197,6 +198,7 @@ public class SendDataToServerActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 sendToServer();
+                Toast.makeText(getApplicationContext(),"Location Sent !", Toast.LENGTH_LONG).show();
             }
         });
     }

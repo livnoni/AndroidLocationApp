@@ -40,18 +40,28 @@
             android:text="Show location on Map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_move_to_map_activity" />
+            android:id="@+id/button_move_to_map_activity"
+            android:background="@android:color/holo_orange_dark" />
 
         <Button
             android:text="Share Location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_share_location" />
+            android:id="@+id/button_share_location"
+            android:background="@color/wallet_holo_blue_light" />
 
         <Button
             android:text="Send Data to server"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_send_data_to_server" />
+            android:id="@+id/button_send_data_to_server"
+            android:background="@android:color/holo_green_dark" />
+
+        <Button
+            android:text="QR Code Scanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_QrCodeScanner"
+            android:background="@color/wallet_highlighted_text_holo_dark" />
     </LinearLayout>
 </RelativeLayout>

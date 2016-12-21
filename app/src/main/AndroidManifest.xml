@@ -41,9 +41,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity">
+        <activity android:name=".QrReaderActivity">
             <intent-filter>
-                <action android:name="com.example.yehuda.androidlocationapp.TestActivity" />
+                <action android:name="com.example.yehuda.androidlocationapp.QrReaderActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

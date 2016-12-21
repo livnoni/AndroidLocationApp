@@ -44,7 +44,8 @@
             android:text="send data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_send_data" />
+            android:id="@+id/button_send_data"
+            android:background="@color/cast_intro_overlay_button_background_color" />
 
         <Switch
             android:text="AUTOMATICALLY SEND DATA"
@@ -66,7 +67,8 @@
             android:text="show data from server"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_data_from_server" />
+            android:id="@+id/button_data_from_server"
+            android:background="@color/cast_intro_overlay_button_background_color" />
 
     </LinearLayout>
 </RelativeLayout>
