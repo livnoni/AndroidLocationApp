@@ -63,5 +63,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_QrCodeScanner"
             android:background="@color/wallet_highlighted_text_holo_dark" />
+
+        <Button
+            android:text="BLE Code Scanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_BLECodeScanner"
+            android:background="?attr/colorAccent" />
     </LinearLayout>
 </RelativeLayout>

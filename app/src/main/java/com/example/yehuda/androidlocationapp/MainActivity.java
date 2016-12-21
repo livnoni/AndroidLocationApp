@@ -29,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
     private Button SendData;
     private Button SendDataToServer;
     private Button buttonQrCodeScanner;
+    private Button buttonBLECodeScanner;
     private TextView CoordinationView;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -53,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
         GpsButton.setBackgroundColor(Color.RED);
 
         buttonQrCodeScanner = (Button) findViewById(R.id.button_QrCodeScanner);
+        buttonBLECodeScanner = (Button) findViewById(R.id.button_BLECodeScanner);
 
         CoordinationView = (TextView) findViewById(R.id.GpsCoordination);
 
@@ -99,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
         onClickButtonSendDataListener();
         onClickButtonSendDataToServer();
         onClickbuttonQrCodeScanner();
+        onClickbuttonBLECodeScanner();
     }
 
     @Override
@@ -196,11 +199,22 @@ public class MainActivity extends ActionBarActivity {
                 Log.i("QR:","button pressed.");
                 Intent intent = new Intent("com.example.yehuda.androidlocationapp.QrReaderActivity");
                 startActivity(intent);
-
-
             }
         });
     }
+    public void onClickbuttonBLECodeScanner()
+    {
+        buttonBLECodeScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Log.i("QR:","button pressed.");
+                Intent intent = new Intent("com.example.yehuda.androidlocationapp.BLEreaderActivity");
+                startActivity(intent);
+            }
+        });
+    }
+
 }
 
 

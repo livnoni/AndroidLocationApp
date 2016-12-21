@@ -44,18 +44,23 @@
         <activity android:name=".QrReaderActivity">
             <intent-filter>
                 <action android:name="com.example.yehuda.androidlocationapp.QrReaderActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".SendDataToServerActivity">
             <intent-filter>
                 <action android:name="com.example.yehuda.androidlocationapp.SendDataToServerActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
-
+        <activity android:name=".BLEreaderActivity">
+            <intent-filter>
+                <action android:name="com.example.yehuda.androidlocationapp.BLEreaderActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
