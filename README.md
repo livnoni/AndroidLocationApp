@@ -5,7 +5,7 @@ It provide the user the ability to see his mobile gps location and share it to t
 Also the user can save his location to a dedicated onlone database and see his last locations online on: 
 [Online DataBase](https://yehudalocation.000webhostapp.com/location/website/index.html)
 
-Use Cases:
+****Use Cases:****
 	1.The app allows you to show your location, altitude, speed and accuracy.
 	2. The app can show's the position on google map.
 	3.The app allows you to share your location to friend by using mail, what's up etc.
