@@ -13,10 +13,7 @@ Also the user can save his location to a dedicated onlone database and see his l
 
 There are many apps that allow you to see and send your location from the mobile, like Glympse,Family Locatore by Life360,Share my location etc.
 
-This app is soft, free and very simple.
-You can also take the code and adjust it your need.
- 
-
+This app is lightweight, free, open-source and very simple.
 
 
 Use Cases:
