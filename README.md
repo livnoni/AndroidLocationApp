@@ -16,4 +16,4 @@ There are many apps that allow you to see and send your location from the mobile
 This app is lightweight, free, open-sourced and very simple.
 
 
-The app have created by Yehuda Livnoni & Or Evron.
+Created by Yehuda Livnoni & Or Evron.
