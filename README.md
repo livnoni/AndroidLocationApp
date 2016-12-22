@@ -6,7 +6,7 @@ Also the user can save his location to a dedicated onlone database and see his l
 [Online DataBase](https://yehudalocation.000webhostapp.com/location/website/index.html)
 
 -Use Cases:
--	The app allows you to show your location, altitude, speed and accuracy.
+-	The app allows you to show your location, hight, speed and accuracy.
 -	The app can show's the position on google map.
 -	The app allows you to share your location to friend by using mail, what's up etc.
 -	The app allows you to share your location to server, and you can also see it in a web site.
