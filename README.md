@@ -20,7 +20,7 @@ This app is lightweight, free, open-sourced and very simple.
 
 -Installation:
 
-Just put the AndroidLocationApp.apk file on your phone. and install it.
+Just put the [AndroidLocationApp.apk] (https://github.com/livnoni/AndroidLocationApp/blob/master/AndroidLocationApp.apk) file on your phone. and install it.
 
 -Credits:
 
