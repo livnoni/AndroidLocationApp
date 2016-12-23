@@ -16,5 +16,17 @@ There are many apps that allow you to see and send your location from the mobile
 
 This app is lightweight, free, open-sourced and very simple.
 
+-Installation:
+
+Just put the AndroidLocationApp.apk file on your phone. and install it.
+
+-Credits:
+
+For see the lovation on google maps: [Google Maps APIs](https://developers.google.com/maps/documentation/android-api/start).
+
+for free storage server appachi and php : [000webhost](https://www.000webhost.com/).
+
+For Transmitting Network Data using [Volley Project](https://developer.android.com/training/volley/index.html).
+
 
 Created by Yehuda Livnoni & Or Evron.
